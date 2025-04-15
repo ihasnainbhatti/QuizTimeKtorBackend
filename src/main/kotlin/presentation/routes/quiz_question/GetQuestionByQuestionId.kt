@@ -1,13 +1,13 @@
 package com.nainnie.presentation.routes.quiz_question
 
-import com.nainnie.questions
+import com.nainnie.domain.repository.QuizQuestionsRepository
 import io.ktor.http.*
 import io.ktor.server.resources.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.routing.get
 
-fun Route.getQuestionByQuestionId() {
+fun Route.getQuestionByQuestionId(quizQuestionsRepository: QuizQuestionsRepository) {
     get(path = "/quiz/questions/{questionId}") {
         val id = call.pathParameters["questionId"]
         if (id.isNullOrBlank()) {
